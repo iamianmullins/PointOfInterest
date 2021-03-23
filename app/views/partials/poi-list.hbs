@@ -1,0 +1,22 @@
+<div class="uk-margin uk-width-expand uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+
+    <table class="uk-table uk-table-divider uk-table-hover">
+        <caption>
+            {{title}}
+        </caption>
+        <thead>
+        <th>Poi Name</th>
+        <th>Category</th>
+        <th>Poi Description</th>
+        </thead>
+        <tbody class="uk-text-left uk-child-width-1-3">
+        {{#each points}}
+            <tr>
+                <td>{{poiname}}</td>
+                <td>{{category}}</td>
+                <td>{{description}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
