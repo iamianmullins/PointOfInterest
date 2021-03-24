@@ -5,13 +5,22 @@ const Inert = require('@hapi/inert');
 const Vision = require('@hapi/vision');
 const Handlebars = require('handlebars');
 const Cookie = require("@hapi/cookie");
+const Joi = require("@hapi/joi");
 const env = require('dotenv');
 
-env.config();
+const result = env.config();
+if (result.error) {
+  console.log(result.error.message);
+  process.exit(1);
+}
 
 const server = Hapi.server({
   port: 3000,
   host: 'localhost',
+});
+
+const server = Hapi.server({
+  port: process.env.PORT || 3000,
 });
 
 //server.bind({
@@ -36,6 +45,8 @@ async function init() {
     layout: true,
     isCached: false,
   });
+
+  server.validator(require("@hapi/joi"));
 
   server.auth.strategy('session', 'cookie', {
     cookie: {
