@@ -20,18 +20,22 @@ const pointerest = {
   },
   newpoi: {
     handler: async function(request, h) {
-      const id = request.auth.credentials.id;
-      const user = await User.findById(id);
-      const data = request.payload;
-      const newPoint = new point({
-        poiname: data.poiname,
-        category: data.category,
-        description: data.description,
-        user: user._id
-      });
-      await newPoint.save();
-      return h.redirect("/report");
-    },
+      try {
+        const id = request.auth.credentials.id;
+        const user = await User.findById(id);
+        const data = request.payload;
+        const newPoint = new point({
+          poiname: data.poiname,
+          category: data.category,
+          description: data.description,
+          user: user._id
+        });
+        await newPoint.save();
+        return h.redirect("/report");
+      } catch (err) {
+        return h.view("main", { errors: [{ message: err.message }] });
+      }
+    }
   }
 };
 
