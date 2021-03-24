@@ -16,7 +16,9 @@ const pointerest = {
   },
   newpoi: {
     handler: function (request, h) {
-      const data = request.payload;
+      let data = request.payload;
+      var userEmail = request.auth.credentials.id;
+      data.user =  this.users[userEmail];
       this.points.push(data);
       return h.redirect("/report");
     },
