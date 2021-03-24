@@ -158,6 +158,19 @@ const Accounts = {
       }
     },
   },
+
+  deleteUser: {
+    handler: async function(request, h) {
+      try {
+        const user = User.findById(request.params._id);
+        console.log("Deleting User: " + user);
+        await User.deleteOne(User.user);
+        return h.redirect("login");
+      } catch (err) {
+        return h.view("main", { errors: [{ message: err.message }] });
+      }
+    }
+  }
 }
 
 module.exports = Accounts;

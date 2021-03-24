@@ -36,7 +36,19 @@ const pointerest = {
         return h.view("main", { errors: [{ message: err.message }] });
       }
     }
+  },
+  deletePoi: {
+    handler: async function(request, h) {
+      try {
+        const poi = point.findById(request.params._id);
+        console.log("Deleting Poi: " + poi);
+        await point.deleteOne(point.poi);
+        return h.redirect("/report");
+      } catch (err) {
+        return h.view("main", { errors: [{ message: err.message }] });
+      }
+    }
   }
-};
+  };
 
 module.exports = pointerest;
