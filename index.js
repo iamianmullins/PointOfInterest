@@ -14,10 +14,10 @@ if (result.error) {
   process.exit(1);
 }
 
-const server = Hapi.server({
-  port: 3000,
-  host: 'localhost',
-});
+//const server = Hapi.server({
+//  port: 3000,
+//  host: 'localhost',
+//});
 
 const server = Hapi.server({
   port: process.env.PORT || 3000,
