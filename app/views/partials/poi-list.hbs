@@ -16,6 +16,14 @@
                 <td>{{category}}</td>
                 <td>{{description}}</td>
                 <td>{{user.firstName}} {{user.lastName}}</td>
+                <td>
+                    <form action="/deletePoi" method="GET">
+                        <div class="uk-margin">
+                            <input  type="hidden" type="text" name="id" value="{{_id}}">
+                            <button class="uk-button uk-width-1-1"><i style="color:rgb(182,38,38)" class="far fa-trash-alt"> </i> </button>
+                        </div>
+                    </form>
+                </td>
             </tr>
         {{/each}}
         </tbody>

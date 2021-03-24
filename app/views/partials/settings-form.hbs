@@ -27,4 +27,11 @@
         <button class="uk-button uk-button-primary uk-button-large uk-width-1-1">Save </button>
     </div>
 </form>
+<form action="/deleteUser" method="GET">
+    <div class="uk-margin">
+        <input  type="hidden" type="text" name="id" value="{{_id}}">
+        <button class="uk-button uk-button-danger uk-button-large uk-width-1-1">Delete account  <i style="color:rgb(255,255,255)" class="far fa-trash-alt"> </i> </button>
+    </div>
+</form>
+
 {{> error }}
