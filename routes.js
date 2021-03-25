@@ -16,6 +16,7 @@ module.exports = [
 
   { method: "GET", path: "/home", config: pointerest.home },
   { method: "GET", path: "/report", config: pointerest.report },
+  { method: "POST", path: "/reportfiltered", config: pointerest.reportfiltered },
   { method: 'GET', path: '/deletePoi', config: pointerest.deletePoi },
 
   { method: 'POST', path: '/newpoi', config: pointerest.newpoi },

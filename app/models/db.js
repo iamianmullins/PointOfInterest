@@ -29,7 +29,7 @@ async function seed() {
   const points = require('./points');
   const User = require('./user');
   const dbData = await seeder.seed(data, { dropDatabase: false, dropCollections: true });
-  console.log(dbData);
+  //console.log(dbData);
 }
 
 db.once('open', function () {
