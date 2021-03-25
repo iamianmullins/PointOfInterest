@@ -11,12 +11,16 @@ const Accounts = {
       return h.view("main", { title: "Welcome to Pointerest" });
     }
   },
+
+  //Displays signup view
   showSignup: {
     auth: false,
     handler: function(request, h) {
       return h.view('signup', { title: 'Sign up for Pointerest' });
     }
   },
+
+  //User signup with validation
   signup: {
     auth: false,
     validate: {
@@ -61,12 +65,16 @@ const Accounts = {
       }
     },
   },
+
+  //Displays login view
   showLogin: {
     auth: false,
     handler: function(request, h) {
       return h.view('login', { title: 'Login to Pointerest' });
     }
   },
+
+  //Login with validation
   login: {
     auth: false,
     validate: {
@@ -103,6 +111,8 @@ const Accounts = {
       }
     },
   },
+
+  //Logs current user out, clears cookie
   logout: {
     auth: false,
     handler: function(request, h) {
@@ -110,6 +120,8 @@ const Accounts = {
       return h.redirect('/');
     }
   },
+
+  //Diplays settings view
   showSettings: {
     handler: async function(request, h) {
       try {
@@ -121,6 +133,8 @@ const Accounts = {
       }
     }
   },
+
+  //Update settings for a logged in user
   updateSettings: {
     validate: {
       payload: {
@@ -159,6 +173,7 @@ const Accounts = {
     },
   },
 
+  // Deletes user, redirects user to login
   deleteUser: {
     handler: async function(request, h) {
       try {

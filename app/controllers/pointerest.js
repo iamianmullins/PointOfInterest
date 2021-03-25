@@ -7,7 +7,9 @@ const _ = require('lodash/core');
 const axios = require("axios");
 
 
-
+//No functionality yet
+//Promise { <pending> }
+//Not returning as expected
 async function getWeather(latitude,longitude, openweatherapi) {
   let weather = null;
   const weatherRequest = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${openweatherapi}`;
@@ -33,6 +35,7 @@ async function getWeather(latitude,longitude, openweatherapi) {
 }
 
 const pointerest = {
+  //Displays home view, with user dashboard components
   home: {
     handler: async function(request, h) {
       const se = "South East";
@@ -55,6 +58,8 @@ const pointerest = {
       });
     },
   },
+
+  //Displays points report, weather functionality not fully implemented
   report: {
     handler: async function(request, h) {
       const openweatherapi = process.env.openweatherapi
@@ -76,6 +81,8 @@ const pointerest = {
     },
   },
 
+  //Displays filtered points report using category,
+  // weather functionality not fully implemented
   reportfiltered: {
     handler: async function(request, h) {
       const openweatherapi = process.env.openweatherapi
@@ -99,6 +106,8 @@ const pointerest = {
     },
   },
 
+
+  //Adds new point of interest
   newpoi: {
     handler: async function(request, h) {
       try {
@@ -120,6 +129,8 @@ const pointerest = {
       }
     }
   },
+
+  //Deletes specific point of interest
   deletePoi: {
     handler: async function(request, h) {
       try {
