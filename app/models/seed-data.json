@@ -1,0 +1,117 @@
+{
+  "User": {
+    "_model": "User",
+    "ian": {
+      "firstName": "Ian",
+      "lastName": "Mullins",
+      "email": "ian@pointerest.com",
+      "password": "secret"
+    },
+    "jen": {
+      "firstName": "Jen",
+      "lastName": "Mullins",
+      "email": "jen@pointerest.com",
+      "password": "secret"
+    }
+  },
+  "Points": {
+    "_model": "Points",
+    "one": {
+      "poiname": "Mahon Falls",
+      "category": "South East",
+      "description": "Beautiful Waterfall",
+      "latitude": 52.059937,
+      "longitude": -9.504427,
+      "user": "->User.ian"
+    },
+    "two": {
+      "poiname": "Hook Lighthouse",
+      "category": "South East",
+      "description": "Fantastic location, plenty to do in that area",
+      "latitude": 52.059937,
+      "longitude": -9.504427,
+      "user": "->User.ian"
+    },
+    "three": {
+      "poiname": "Ballycotton Lighthouse",
+      "category": "South West",
+      "description": "Beautiful Lighthouse, lovely scenery",
+      "latitude": 52.059937,
+      "longitude": -9.504427,
+      "user": "->User.jen"
+    },
+    "four": {
+      "poiname": "Giants Causeway",
+      "category": "North East",
+      "description": "Long trip, but worth it",
+      "latitude": 52.059937,
+      "longitude": -9.504427,
+      "user": "->User.jen"
+    },
+    "five": {
+      "poiname": "Glendalough",
+      "category": "South East",
+      "description": "Fantastic views. Sunny day really helped",
+      "latitude": 52.059937,
+      "longitude": -9.504427,
+      "user": "->User.jen"
+    },
+    "six": {
+      "poiname": "The Burren",
+      "category": "South West",
+      "description": "Not much to see here",
+      "latitude": 52.059937,
+      "longitude": -9.504427,
+      "user": "->User.jen"
+    },
+    "seven": {
+      "poiname": "The Ring of Kerry",
+      "category": "South West",
+      "description": "Absolutely stunning, 10/10",
+      "latitude": 52.059937,
+      "longitude": -9.504427,
+      "user": "->User.jen"
+    },
+    "eight": {
+      "poiname": "Japanese Gardens Tramore",
+      "category": "South East",
+      "description": "Fantastic place",
+      "latitude": 52.059937,
+      "longitude": -9.504427,
+      "user": "->User.jen"
+    },
+    "nine": {
+      "poiname": "Coumshingaun",
+      "category": "South East",
+      "description": "Absolutely stunning views",
+      "latitude": 52.059937,
+      "longitude": -9.504427,
+      "user": "->User.jen"
+    },
+    "ten": {
+      "poiname": "The Dark Hedges",
+      "category": "North West",
+      "description": "Great, 10/10",
+      "latitude": 52.059937,
+      "longitude": -9.504427,
+      "user": "->User.ian"
+    },
+    "eleven": {
+      "poiname": "The Cliffs of Moher",
+      "category": "North West",
+      "description": "Absolutely stunning, 10/10",
+      "latitude": 52.059937,
+      "longitude": -9.504427,
+      "user": "->User.ian"
+    },
+    "twelve": {
+      "poiname": "The Rock of Cashel",
+      "category": "South East",
+      "description": "Breathtaking",
+      "latitude": 52.059937,
+      "longitude": -9.504427,
+      "user": "->User.jen"
+    }
+
+  }
+}
