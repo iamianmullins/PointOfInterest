@@ -44,10 +44,10 @@ const pointerest = {
       const nw = "North West";
       const points = await point.find().populate("user").lean();
       const user = await User.find().populate("user").lean();
-      const filtersw = _.filter(points, {category: se,});
-      const filterse = _.filter(points, {category: sw,});
-      const filternw = _.filter(points, {category: ne,});
-      const filterne = _.filter(points, {category: nw,});
+      const filterse = _.filter(points, {category: se,});
+      const filtersw = _.filter(points, {category: sw,});
+      const filterne = _.filter(points, {category: ne,});
+      const filternw = _.filter(points, {category: nw,});
       return h.view("home", {
         title: "Add a point of interest",
         lensw: filtersw.length,
