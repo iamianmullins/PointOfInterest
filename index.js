@@ -13,15 +13,25 @@ if (result.error) {
   console.log(result.error.message);
   process.exit(1);
 }
+const fs = require('fs');
+const server = Hapi.server({
+  port: 3443,
+  tls: {
+    key: fs.readFileSync('keys/private/webserver.key'),
+    cert: fs.readFileSync('keys/webserver.crt')
+  }
+});
 
 //const server = Hapi.server({
 //  port: 3000,
 //  host: 'localhost',
 //});
 
-const server = Hapi.server({
-  port: process.env.PORT || 3000,
-});
+//const server = Hapi.server({
+//  port: process.env.PORT || 3000,
+//});
+
+
 
 //server.bind({
  // users: {},

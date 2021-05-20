@@ -3,6 +3,9 @@
 const User = require('../models/user');
 const Boom = require("@hapi/boom");
 const Joi = require('@hapi/joi');
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+var sanitizeHtml = require('sanitize-html');
 
 const Accounts = {
   index: {
@@ -51,12 +54,14 @@ const Accounts = {
           const message = "Email address is already registered";
           throw Boom.badData(message);
         }
+        const hash = await bcrypt.hash(payload.password, saltRounds);
         const newUser = new User({
-          firstName: payload.firstName,
-          lastName: payload.lastName,
+          firstName: sanitizeHtml(payload.firstName),
+          lastName: sanitizeHtml(payload.lastName),
           email: payload.email,
-          password: payload.password,
+          password: hash,
         });
+        console.log("Sanitized: " + newUser.firstName + " " +newUser.lastName)
         user = await newUser.save();
         request.cookieAuth.set({ id: user.id });
         return h.redirect("/home");
@@ -103,7 +108,7 @@ const Accounts = {
           const message = "Email address is not registered";
           throw Boom.unauthorized(message);
         }
-        user.comparePassword(password);
+        await user.comparePassword(password);
         request.cookieAuth.set({ id: user.id });
         return h.redirect("/home");
       } catch (err) {
@@ -159,12 +164,13 @@ const Accounts = {
     handler: async function(request, h) {
       try {
         const userEdit = request.payload;
+        const hash = await bcrypt.hash(userEdit.password, saltRounds);
         const id = request.auth.credentials.id;
         const user = await User.findById(id);
-        user.firstName = userEdit.firstName;
-        user.lastName = userEdit.lastName;
+        user.firstName = sanitizeHtml(userEdit.firstName);
+        user.lastName = sanitizeHtml(userEdit.lastName);
         user.email = userEdit.email;
-        user.password = userEdit.password;
+        user.password = hash;
         await user.save();
         return h.redirect("/settings");
       } catch (err) {
@@ -172,7 +178,6 @@ const Accounts = {
       }
     },
   },
-
   // Deletes user, redirects user to login
   deleteUser: {
     handler: async function(request, h) {

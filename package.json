@@ -7,6 +7,9 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": "14.16.0"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -17,11 +20,13 @@
     "@hapi/joi": "^17.1.1",
     "@hapi/vision": "^6.0.1",
     "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
     "dotenv": "^8.2.0",
     "handlebars": "^4.7.7",
     "lodash": "^4.17.21",
     "mais-mongoose-seeder": "^1.0.7",
-    "mongoose": "^5.12.2"
+    "mongoose": "^5.12.2",
+    "sanitize-html": "^2.3.3"
   },
   "devDependencies": {
     "prettier": "^2.2.1"

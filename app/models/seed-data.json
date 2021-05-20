@@ -1,17 +1,17 @@
 {
   "User": {
     "_model": "User",
-    "ian": {
-      "firstName": "Ian",
-      "lastName": "Mullins",
-      "email": "ian@pointerest.com",
-      "password": "secret"
+    "homer": {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "$2a$10$HnapEWWKQQ0.0Ft33nXxtuJ0fsmd9ywYswEzT4C.6Ul5y6cOU.UEa"
     },
-    "jen": {
-      "firstName": "Jen",
-      "lastName": "Mullins",
-      "email": "jen@pointerest.com",
-      "password": "secret"
+    "marge": {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "$2a$10$D3TWK8MSAh63Lhk4gIFSJ.ekM368J88qJRUYSbuBfzffex6B0dFwK"
     }
   },
   "Points": {
@@ -22,7 +22,7 @@
       "description": "Beautiful Waterfall",
       "latitude": 50.059937,
       "longitude": -7.504427,
-      "user": "->User.ian"
+      "user": "->User.homer"
     },
     "two": {
       "poiname": "Hook Lighthouse",
@@ -30,7 +30,7 @@
       "description": "Fantastic location, plenty to do in that area",
       "latitude": 53.059937,
       "longitude": -5.504427,
-      "user": "->User.ian"
+      "user": "->User.homer"
     },
     "three": {
       "poiname": "Ballycotton Lighthouse",
@@ -38,7 +38,7 @@
       "description": "Beautiful Lighthouse, lovely scenery",
       "latitude": 55.059937,
       "longitude": -6.504427,
-      "user": "->User.jen"
+      "user": "->User.homer"
     },
     "four": {
       "poiname": "Giants Causeway",
@@ -46,7 +46,7 @@
       "description": "Long trip, but worth it",
       "latitude": 60.059937,
       "longitude": -2.504427,
-      "user": "->User.jen"
+      "user": "->User.homer"
     },
     "five": {
       "poiname": "Glendalough",
@@ -54,7 +54,7 @@
       "description": "Fantastic views. Sunny day really helped",
       "latitude": 59.059937,
       "longitude": -9.504427,
-      "user": "->User.jen"
+      "user": "->User.homer"
     },
     "six": {
       "poiname": "The Burren",
@@ -62,7 +62,7 @@
       "description": "Not much to see here",
       "latitude": 49.059937,
       "longitude": -5.504427,
-      "user": "->User.jen"
+      "user": "->User.homer"
     },
     "seven": {
       "poiname": "The Ring of Kerry",
@@ -70,7 +70,7 @@
       "description": "Absolutely stunning, 10/10",
       "latitude": 62.059937,
       "longitude": -8.504427,
-      "user": "->User.jen"
+      "user": "->User.marge"
     },
     "eight": {
       "poiname": "Japanese Gardens Tramore",
@@ -78,7 +78,7 @@
       "description": "Fantastic place",
       "latitude": 35.059937,
       "longitude": -5.504427,
-      "user": "->User.jen"
+      "user": "->User.marge"
     },
     "nine": {
       "poiname": "Coumshingaun",
@@ -86,7 +86,7 @@
       "description": "Absolutely stunning views",
       "latitude": 52.059937,
       "longitude": -9.504427,
-      "user": "->User.jen"
+      "user": "->User.marge"
     },
     "ten": {
       "poiname": "The Dark Hedges",
@@ -94,7 +94,7 @@
       "description": "Great, 10/10",
       "latitude": 52.059937,
       "longitude": -9.504427,
-      "user": "->User.ian"
+      "user": "->User.marge"
     },
     "eleven": {
       "poiname": "The Cliffs of Moher",
@@ -102,7 +102,7 @@
       "description": "Absolutely stunning, 10/10",
       "latitude": 52.059937,
       "longitude": -9.504427,
-      "user": "->User.ian"
+      "user": "->User.marge"
     },
     "twelve": {
       "poiname": "The Rock of Cashel",
@@ -110,7 +110,7 @@
       "description": "Breathtaking",
       "latitude": 52.059937,
       "longitude": -9.504427,
-      "user": "->User.jen"
+      "user": "->User.marge"
     }
 
   }
