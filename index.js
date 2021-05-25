@@ -13,23 +13,24 @@ if (result.error) {
   console.log(result.error.message);
   process.exit(1);
 }
-const fs = require('fs');
+//const fs = require('fs');
+//const server = Hapi.server({
+//  port: 3443,
+//  tls: {
+//    key: fs.readFileSync('keys/private/webserver.key'),
+//    cert: fs.readFileSync('keys/webserver.crt')
+//  }
+//});
+
+//const server = Hapi.server({
+// port: 3000,
+// host: 'localhost',
+// });
+
 const server = Hapi.server({
-  port: 3443,
-  tls: {
-    key: fs.readFileSync('keys/private/webserver.key'),
-    cert: fs.readFileSync('keys/webserver.crt')
-  }
+  port: process.env.PORT || 4000,
+  routes: { cors: true },
 });
-
-//const server = Hapi.server({
-//  port: 3000,
-//  host: 'localhost',
-//});
-
-//const server = Hapi.server({
-//  port: process.env.PORT || 3000,
-//});
 
 
 
@@ -70,6 +71,7 @@ async function init() {
   server.auth.default('session');
 
   server.route(require('./routes'));
+  server.route(require('./routes-api'));
   await server.start();
   console.log(`Server running at: ${server.info.uri}`);
 }
