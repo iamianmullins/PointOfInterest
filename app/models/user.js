@@ -16,8 +16,8 @@ userSchema.statics.findByEmail = function(email) {
   return this.findOne({ email : email});
 };
 
-userSchema.methods.comparePassword = async function(candidatePassword) {
-  const isMatch = await bcrypt.compare(candidatePassword, this.password);
+userSchema.methods.comparePassword = async function(userPassword) {
+  const isMatch = await bcrypt.compare(userPassword, this.password);
   if (!isMatch) {
     throw Boom.unauthorized('Password mismatch');
   }
