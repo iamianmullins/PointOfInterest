@@ -2,10 +2,13 @@
 const Boom = require("@hapi/boom");
 const points = require('../models/points');
 const User = require("../models/user");
+const utils = require("./utils.js");
 
 const Points = {
   find: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function(request, h) {
         const pointslist = await points.find();
         return pointslist;
@@ -13,7 +16,9 @@ const Points = {
   },
 
   findOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function(request, h) {
       try {
         const onepoint = await points.findOne({ _id: request.params.id });
@@ -27,8 +32,21 @@ const Points = {
     }
   },
 
+
+  findAll: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      const userPoints = await points.find().populate("user");
+      return userPoints;
+    },
+  },
+
   findByUser: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const userPoints = await points.find({ user: request.params.id });
@@ -45,7 +63,9 @@ const Points = {
 
 //****************************
   deleteByUser: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const user = await User.findOne({ _id: request.params.id });
@@ -62,7 +82,9 @@ const Points = {
   },
 
   create: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       const newPoint = new points(request.payload);
       const apoint = await newPoint.save();
@@ -74,21 +96,26 @@ const Points = {
   },
 
   createPoint: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
+      const userId = utils.getUserIdFromRequest(request);
       let point = new points(request.payload);
       const user = await User.findOne({ _id: request.params.id });
       if (!user) {
         return Boom.notFound("No User with this id");
       }
-      point.candidate = user._id;
+      point.user = userId;
       point = await point.save();
       return point;
     },
   },
 
   deleteOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       const response  = await points.remove({ _id: request.params.id });
       if (response.deletedCount == 1) {
@@ -99,7 +126,9 @@ const Points = {
   },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       await points.remove({});
       return { success: true };

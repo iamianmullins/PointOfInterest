@@ -5,19 +5,23 @@ const PointerestService = require("./points-service");
 const fixtures = require("./fixtures.json");
 const _ = require("lodash");
 
-suite("User API tests", function () {
+suite("User API tests", function() {
   let users = fixtures.users;
   let newUser = fixtures.newUser;
 
   const pointerestService = new PointerestService(fixtures.pointerestService);
 
-  setup(async function () {
+  suiteSetup(async function() {
     await pointerestService.deleteAllUsers();
+    const returnedUser = await pointerestService.createUser(newUser);
+    const response = await pointerestService.authenticate(newUser);
   });
 
-  teardown(async function () {
+  suiteTeardown(async function() {
     await pointerestService.deleteAllUsers();
+    pointerestService.clearAuth();
   });
+
 
   test("Create a User", async function () {
     const returnedUser = await pointerestService.createUser(newUser);
@@ -46,27 +50,43 @@ suite("User API tests", function () {
     assert(u == null);
   });
 
-  test("Get all Users", async function () {
+  test("Get all Users", async function() {
+    await pointerestService.deleteAllUsers();
+    await pointerestService.createUser(newUser);
+    await pointerestService.authenticate(newUser);
     for (let u of users) {
       await pointerestService.createUser(u);
     }
-
     const allUsers = await pointerestService.getUsers();
-    assert.equal(allUsers.length, users.length);
+    assert.equal(allUsers.length, users.length + 1);
   });
 
-  test("Get Users detail", async function () {
+  test("Get Users Detail", async function() {
+    await pointerestService.deleteAllUsers();
+    const user = await pointerestService.createUser(newUser);
+    await pointerestService.authenticate(newUser);
     for (let u of users) {
       await pointerestService.createUser(u);
     }
+    const testUser = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      password: user.password
+    };
+    users.unshift(testUser);
     const allUsers = await pointerestService.getUsers();
     for (var i = 0; i < users.length; i++) {
       assert(_.some([allUsers[i]], users[i]), "returnedUser must be a superset of newUser");
     }
   });
 
-  test("get all users empty", async function () {
+  test("Get all users empty", async function () {
+    await pointerestService.deleteAllUsers();
+    const user = await pointerestService.createUser(newUser);
+    await pointerestService.authenticate(newUser);
     const allUsers = await pointerestService.getUsers();
-    assert.equal(allUsers.length, 0);
+    assert.equal(allUsers.length, 1);
   });
+
 });
