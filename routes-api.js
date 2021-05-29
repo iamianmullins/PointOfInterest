@@ -9,7 +9,7 @@ module.exports = [
   { method: 'DELETE', path: '/api/points/{id}', config: Points.deleteOne },
   { method: 'DELETE', path: '/api/points', config: Points.deleteAll },
   { method: "GET", path: "/api/users/{id}/points", config: Points.findByUser },
-  { method: "POST", path: "/api/points/{id}", config: Points.createPoint },
+  { method: "POST", path: "/api/points/new", config: Points.createPoint },
 
   //USER ROUTES
   { method: "GET", path: "/api/users", config: Users.find },
@@ -17,5 +17,7 @@ module.exports = [
   { method: "POST", path: "/api/users", config: Users.create },
   { method: "DELETE", path: "/api/users/{id}", config: Users.deleteOne },
   { method: "DELETE", path: "/api/users", config: Users.deleteAll },
+  { method: "POST", path: "/api/users/authenticate", config: Users.authenticate },
+  { method: "PUT", path: "/api/users/{id}", config: Users.update },
 
 ];

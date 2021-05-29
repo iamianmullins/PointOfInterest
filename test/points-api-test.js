@@ -5,11 +5,24 @@ const PointerestService = require("./points-service");
 const fixtures = require("./fixtures.json");
 const _ = require("lodash");
 
+
 suite("Points API tests", function () {
   let points = fixtures.Points;
   let newPoint = fixtures.newPoint;
-  let newUser = fixtures.newUser;
+
   const pointerestService = new PointerestService(fixtures.pointerestService);
+  let newUser = fixtures.newUser;
+
+  suiteSetup(async function () {
+    await pointerestService.deleteAllUsers();
+    const returnedUser = await pointerestService.createUser(newUser);
+    const response = await pointerestService.authenticate(newUser);
+  });
+
+  suiteTeardown(async function () {
+    await pointerestService.deleteAllUsers();
+    pointerestService.clearAuth();
+  });
 
   setup(async function () {
     await pointerestService.deleteAllPoints();
