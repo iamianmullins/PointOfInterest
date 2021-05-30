@@ -15,14 +15,14 @@ suite("Authentication API tests", function () {
     await pointerestService.deleteAllUsers();
   });
 
-  test("Authenticate", async function () {
+  test("authenticate", async function () {
     const returnedUser = await pointerestService.createUser(newUser);
     const response = await pointerestService.authenticate(newUser);
     assert(response.success);
     assert.isDefined(response.token);
   });
 
-  test("Verify Token", async function () {
+  test("verify Token", async function () {
     const returnedUser = await pointerestService.createUser(newUser);
     const response = await pointerestService.authenticate(newUser);
 

@@ -5,19 +5,19 @@
       "firstName": "Homer",
       "lastName": "Simpson",
       "email": "homer@simpson.com",
-      "password": "secret"
+      "password": "$2b$10$gAFAB8klIr7W/4h1O6GR4OuhECbzPCKY3GlX9SpI/ncNTWs6.MVvq"
     },
     {
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
-      "password": "secret"
+      "password": "$2b$10$gAFAB8klIr7W/4h1O6GR4OuhECbzPCKY3GlX9SpI/ncNTWs6.MVvq"
     },
     {
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
-      "password": "secret"
+      "password": "$2b$10$gAFAB8klIr7W/4h1O6GR4OuhECbzPCKY3GlX9SpI/ncNTWs6.MVvq"
     }
   ],
   "Points": [
@@ -48,6 +48,6 @@
     "firstName": "Ned",
     "lastName": "Flanders",
     "email": "ned@flanders.com",
-    "password": "secret"
+    "password": "$2b$10$gAFAB8klIr7W/4h1O6GR4OuhECbzPCKY3GlX9SpI/ncNTWs6.MVvq"
   }
 }
