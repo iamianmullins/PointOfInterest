@@ -3,6 +3,10 @@
 const User = require("../models/user");
 const Boom = require("@hapi/boom");
 const utils = require('./utils.js');
+const Joi = require('@hapi/joi');
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+var sanitizeHtml = require('sanitize-html');
 
 
 const Users = {
@@ -36,8 +40,29 @@ const Users = {
 
   create: {
     auth: false,
+    validate: {
+      payload: {
+        firstName: Joi.string().required(),
+        lastName: Joi.string().required(),
+        email: Joi.string().email().required(),
+        password: Joi.string().required(),
+      },
+      options: {
+        abortEarly: false,
+      },
+      failAction: function(request, h, error) {
+        return Boom.badImplementation("error creating user");
+      },
+    },
     handler: async function (request, h) {
-      const newUser = new User(request.payload);
+      const payload = request.payload;
+      const hash = await bcrypt.hash(payload.password, saltRounds);
+      const newUser = new User({
+        firstName: sanitizeHtml(payload.firstName),
+        lastName: sanitizeHtml(payload.lastName),
+        email: payload.email,
+        password: hash,
+      });
       const user = await newUser.save();
       if (user) {
         return h.response(user).code(201);
@@ -71,16 +96,35 @@ const Users = {
 
   authenticate: {
     auth: false,
+    validate: {
+      payload: {
+        email: Joi.string().email().required(),
+        password: Joi.string().required(),
+      },
+      options: {
+        abortEarly: false,
+      },
+      failAction: function (request, h, error) {
+        return h
+          .view("login", {
+            title: "Sign in error",
+            errors: error.details,
+          })
+          .takeover()
+          .code(400);
+      },
+    },
     handler: async function (request, h) {
       try {
         const user = await User.findOne({ email: request.payload.email });
+        const isMatch = await user.comparePassword(request.payload.password);
         if (!user) {
           return Boom.unauthorized("User not found");
-        } else if (user.password !== request.payload.password) {
+        } else if (!isMatch) {
           return Boom.unauthorized("Invalid password");
         } else {
           const token = utils.createToken(user);
-          return h.response({ success: true, token: token }).code(201);
+          return h.response({ success: true, token: token, id:user.id }).code(201);
         }
       } catch (err) {
         return Boom.notFound("internal db failure");
@@ -92,13 +136,29 @@ const Users = {
     auth: {
       strategy: "jwt",
     },
+    validate: {
+      payload: {
+        firstName: Joi.string().required(),
+        lastName: Joi.string().required(),
+        email: Joi.string().email().required(),
+        password: Joi.string().required(),
+      },
+      options: {
+        abortEarly: false,
+      },
+      failAction: function(request, h, error) {
+        return Boom.badImplementation("error creating user");
+      },
+    },
     handler: async function (request, h) {
+      const payload = request.payload;
+      const hash = await bcrypt.hash(payload.password, saltRounds);
       const userEdit = request.payload;
-      const user = await User.findById(userEdit._id);
-      user.firstName = userEdit.firstName;
-      user.lastName = userEdit.lastName;
+      const user = await User.findById(userEdit.id);
+      user.firstName = sanitizeHtml(userEdit.firstName);
+      user.lastName = sanitizeHtml(userEdit.lastName);
       user.email = userEdit.email;
-      user.password = userEdit.password;
+      user.password = hash;
       await user.save();
       if (user) {
         return { success: true };

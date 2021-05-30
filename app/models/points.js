@@ -3,7 +3,6 @@
 const Mongoose = require("mongoose");
 const Schema = Mongoose.Schema;
 
-
 const pointSchema = new Schema({
   poiname: String,
   category: String,
