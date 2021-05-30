@@ -5,7 +5,6 @@ const PointerestService = require("./points-service");
 const fixtures = require("./fixtures.json");
 const _ = require("lodash");
 
-
 suite("Points API tests", function () {
   let points = fixtures.Points;
   let newPoint = fixtures.newPoint;

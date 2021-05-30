@@ -5,19 +5,19 @@
       "firstName": "Homer",
       "lastName": "Simpson",
       "email": "homer@simpson.com",
-      "password": "secret"
+      "password": "$2b$10$gAFAB8klIr7W/4h1O6GR4OuhECbzPCKY3GlX9SpI/ncNTWs6.MVvq"
     },
     "marge": {
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
-      "password": "secret"
+      "password": "$2b$10$gAFAB8klIr7W/4h1O6GR4OuhECbzPCKY3GlX9SpI/ncNTWs6.MVvq"
     },
     "bart": {
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
-      "password": "secret"
+      "password": "$2b$10$gAFAB8klIr7W/4h1O6GR4OuhECbzPCKY3GlX9SpI/ncNTWs6.MVvq"
     }
   },
   "Points": {
@@ -26,23 +26,23 @@
       "poiname": "Mahon Falls",
       "category": "South East",
       "description": "Beautiful Waterfall",
-      "latitude": 50.059937,
-      "longitude": -7.504427,
+      "latitude": 50.0537,
+      "longitude": -7.5027,
       "user": "->User.homer"
     },
     "two": {
       "poiname": "Hook Lighthouse",
       "category": "South East",
       "description": "Fantastic location, plenty to do in that area",
-      "latitude": 53.059937,
-      "longitude": -5.504427,
+      "latitude": 53.0937,
+      "longitude": -5.50447,
       "user": "->User.homer"
     },
     "three": {
       "poiname": "Ballycotton Lighthouse",
       "category": "South West",
       "description": "Beautiful Lighthouse, lovely scenery",
-      "latitude": 55.059937,
+      "latitude": 55.9937,
       "longitude": -6.504427,
       "user": "->User.homer"
     },
@@ -50,16 +50,16 @@
       "poiname": "Giants Causeway",
       "category": "North East",
       "description": "Long trip, but worth it",
-      "latitude": 60.059937,
-      "longitude": -2.504427,
+      "latitude": 61.059937,
+      "longitude": -3.504427,
       "user": "->User.homer"
     },
     "five": {
       "poiname": "Glendalough",
       "category": "South East",
       "description": "Fantastic views. Sunny day really helped",
-      "latitude": 59.059937,
-      "longitude": -9.504427,
+      "latitude": 56.059937,
+      "longitude": -7.504427,
       "user": "->User.homer"
     },
     "six": {
@@ -118,6 +118,33 @@
       "longitude": -9.504427,
       "user": "->User.marge"
     }
-
+  },
+  "Reviews": {
+    "_model": "Reviews",
+    "one": {
+      "reviewer": "Ian Mullins",
+      "comment": "Five stars, really like this",
+      "date": "01/01/2021 18:00:00"
+    },
+    "two": {
+      "reviewer": "Jen Mullins",
+      "comment": "Fantastic website",
+      "date": "01/01/2021 18:00:00"
+    },
+    "three": {
+      "reviewer": "Milo Mullins",
+      "comment": "This was great",
+      "date": "01/01/2021 18:00:00"
+    },
+    "four": {
+      "reviewer": "Hank Mullins",
+      "comment": "Awesome stuff",
+      "date": "01/01/2021 18:00:00"
+    },
+    "five": {
+      "reviewer": "Teddy Mullins",
+      "comment": "Not a fan of this",
+      "date": "01/01/2021 18:00:00"
+    }
   }
 }
